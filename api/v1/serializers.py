@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Spisak, Tiket
+from .models import Spisak
 
 
 class SpisakSerializer(serializers.ModelSerializer):

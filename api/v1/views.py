@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+from v1 import serializers
 
-# Create your views here.
+class SpisakViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.SpisakSerializer
+    queryset = serializer_class.Meta.model.objects.all()
