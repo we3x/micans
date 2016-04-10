@@ -34,7 +34,7 @@ gulp.task('javascript',['watch'], function() {
       .on('error', function(err){
         console.log(err.toString());
       })
-      .pipe(source('schoolPlatform.js'))
+      .pipe(source('micans.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(sourcemaps.write('./'))

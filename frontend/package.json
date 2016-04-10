@@ -13,6 +13,8 @@
   "author": "Veljko Simic <wex@tilda.center>",
   "license": "GPL-3.0",
   "dependencies": {
+    "angular": "^1.5.3",
+    "angular-ui-router": "^0.2.18",
     "browserify": "^13.0.0",
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^1.6.0",
