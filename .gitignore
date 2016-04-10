@@ -3,3 +3,4 @@ __pycache__/
 pip-log.txt
 *sqlite3
 .repoproject/
+node_modules/
