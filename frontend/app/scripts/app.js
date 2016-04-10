@@ -6,4 +6,6 @@ angular.module('micans', [
   require('angular-ui-router'),
 ])
   .config(require('./config.js'))
-  .constant('API_URL', 'localhost:8000/api/v1/');
+  .service('micansService', require('./service.js'))
+  .controller('micansController', require('./controller.js'))
+  .constant('API_URL', 'http://127.0.0.1:8000/api/v1/');
