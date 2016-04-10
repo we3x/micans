@@ -6,4 +6,4 @@ module.exports = [
   function($scope, spisaks){
     $scope.spisaks = spisaks.data;
   }
-]
+];

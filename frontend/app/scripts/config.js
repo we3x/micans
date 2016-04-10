@@ -4,10 +4,10 @@ module.exports = [
   '$stateProvider',
   '$urlRouterProvider',
   function micansConfig($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/spisak/');
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '/spisak/',
         resolve: {
           spisaks: ['micansService',
             function(micansService){
@@ -17,6 +17,19 @@ module.exports = [
         },
         controller: 'micansController',
         templateUrl: 'views/spisaks.html',
+      })
+      .state('spisakAll',{
+        url: '/:spisakId/all/',
+        resolve: {
+          tikets: ['micansService', '$stateParams',
+            function(micansService, $stateParams){
+              console.log("hello");
+              return micansService.getAllTikets($stateParams.spisakId);
+            }
+          ]
+        },
+        controller: 'tController',
+        templateUrl: 'views/tikets.html'
       });
   }
 ];
