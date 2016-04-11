@@ -1,3 +1,4 @@
 <div ng-repeat="spisak in spisaks">
-  <a href="/#/{{spisak.id}}/all/">{{spisak.ime}}
+  <a href="/#/{{spisak.id}}/all/">{{spisak.ime}}</a>
 </div>
+<input ng-model="ime"></input><button ng-click="createSpisak(ime)">Novi spisak</button>

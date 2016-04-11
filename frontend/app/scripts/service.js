@@ -8,6 +8,10 @@ module.exports = [
       return $http.get(API_URL + 'spisak/');
     }
 
+    function createSpisak(name){
+      return $http.post(API_URL + 'spisak/', {ime: name})
+    }
+
     function getAllTikets(id){
       return $http.get(API_URL + 'spisak/' + id + '/all/');
     }
@@ -25,6 +29,7 @@ module.exports = [
     }
     return {
       getSpisaks: getSpisaks,
+      createSpisak: createSpisak,
       getAllTikets: getAllTikets,
       getDeletedTikets: getDeletedTikets,
       getUnTikets: getUnTikets,
