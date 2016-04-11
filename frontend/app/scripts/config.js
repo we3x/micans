@@ -23,8 +23,43 @@ module.exports = [
         resolve: {
           tikets: ['micansService', '$stateParams',
             function(micansService, $stateParams){
-              console.log("hello");
               return micansService.getAllTikets($stateParams.spisakId);
+            }
+          ]
+        },
+        controller: 'tController',
+        templateUrl: 'views/tikets.html'
+      })
+      .state('spisakDeleted',{
+        url: '/:spisakId/obrisano/',
+        resolve: {
+          tikets: ['micansService', '$stateParams',
+            function(micansService, $stateParams){
+              return micansService.getDeletedTikets($stateParams.spisakId);
+            }
+          ]
+        },
+        controller: 'tController',
+        templateUrl: 'views/tikets.html'
+      })
+      .state('spisakFinished',{
+        url: '/:spisakId/isporuceno/',
+        resolve: {
+          tikets: ['micansService', '$stateParams',
+            function(micansService, $stateParams){
+              return micansService.getFinishedTikets($stateParams.spisakId);
+            }
+          ]
+        },
+        controller: 'tController',
+        templateUrl: 'views/tikets.html'
+      })
+      .state('spisakUn',{
+        url: '/:spisakId/ne_isporuceno/',
+        resolve: {
+          tikets: ['micansService', '$stateParams',
+            function(micansService, $stateParams){
+              return micansService.getUnTikets($stateParams.spisakId);
             }
           ]
         },
