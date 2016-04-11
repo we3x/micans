@@ -1,27 +1,80 @@
-<style>
-.notification-item {
-  padding:10px;
-  margin:5px;
-  background:#ccc;
-  border-radius:4px;
-}
-</style>
-<a href="/#/{{spisakId}}/all/">Sve</a>
-<a href="/#/{{spisakId}}/obrisano/">Obrisano</a>
-<a href="/#/{{spisakId}}/isporuceno/">Isporuceno</a>
-<a href="/#/{{spisakId}}/ne_isporuceno/">Ne Isporuceno</a><br>
-<label>Pretraga: <input ng-model="search"></label>
-<div class="notification-item" ng-repeat="tiket in tikets | filter:search">
-  <div>
-    <div ng-model="showHint" ng-click="showHint = !showHint">
-      {{tiket.ime}} {{tiket.prezime}}<br>
-      {{tiket.adresa}}<br>
-      kolicina: {{tiket.kolicina}}<br>
-    </div>
-    <button>Obrisi</button> <button>{{tiket.stanje === "ne_isporuceno" ? "isporuceno":"vrati"}}</button>
-      <div ng-show="showHint">
-      {{tiket.napomena}}<br>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="/#/{{spisakId}}/all/">Sve</a>
+				</li>
+				<li>
+					<a href="/#/{{spisakId}}/isporuceno/">Isporuceno</a>
+				</li>
+				<li>
+					<a href="/#/{{spisakId}}/ne_isporuceno/">Ne Isporuceno</a>
+				</li>
+				<li>
+					<a href="/#/{{spisakId}}/obrisano/">obrisano</a>
+				</li>
+				<li class="pull-right">
+					 <a href="/#/">Spiskovi</a>
+				</li>
+			</ul>
+      <br>
+      <label>Pretraga: <input ng-model="search"></label>
+      <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
+        Novi Tiket
+      </button>
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div>Ime: <input ng-model="ime"></div>
+              <div>Prezime: <input ng-model="prezime"></div>
+              <div>Adresa: <input ng-model="adresa"></div>
+              <div>Kolicina: <input ng-model="kolicina"></div>
+              <div>
+                Napomena:
+                <textarea class="form-control" rows="3" ng-model="napomena"></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" ng-click="dismiss()" data-dismiss="modal">
+                Close
+              </button>
+              <button type="button" class="btn btn-primary" ng-click="createTiket(ime, prezime, adresa, kolicina, napomena)">
+                Napravi
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+
       <hr>
-  </div>
+      <div class="row">
+        <div ng-repeat="tiket in tikets | filter:search">
+          <div class="container">
+            <div>
+              <div class="col-md-4 text-left">
+                <a class="pull-left" data-toggle="collapse" data-target="#{{tiket.id}}">
+                  {{tiket.ime}} {{tiket.prezime}}
+                </a>
+              </div>
+              <div class="col-md-4 text-center">{{tiket.adresa}}</div>
+              <div class="col-md-4 text-right">{{tiket.kolicina}}
+              </div>
+            </div>
+            <div id="{{tiket.id}}" class="collapse">
+              Napomena: {{tiket.napomena}}
+              <button class="pull-right btn btn-danger btn-sm" ng-click="deleteTiket(tiket)">Obrisi</button>
+              <button class="pull-right btn btn-info btn-sm" ng-click="changeState(tiket)">
+                {{tiket.stanje === "ne_isporuceno" ? "isporuceno":"vrati"}}
+              </button>
+            </div>
+          </div><hr>
+        </div>
+      </div>
+		</div>
+	</div>
 </div>

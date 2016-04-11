@@ -12,6 +12,11 @@ module.exports = [
         $window.location.reload();
       })
     }
+    $scope.obrisiSpisak = function(id){
+      micansService.deleteSpisak(id).then(function(){
+        $window.location.reload();
+      })
+    }
 
   }
 ];
