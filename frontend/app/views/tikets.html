@@ -1,7 +1,22 @@
-<div ng-repeat="tiket in tikets">
-  {{tiket.ime}} {{tiket.prezime}}<br>
-  {{tiket.adresa}}<br>
-  {{tiket.kolicina}}<br>
-  {{tiket.napomena}}<br>
-  <hr>
+<style>
+.notification-item {
+  padding:10px;
+  margin:5px;
+  background:#ccc;
+  border-radius:4px;
+}
+</style>
+<div class="notification-item" ng-repeat="tiket in tikets">
+  <div>
+    <div ng-model="showHint" ng-click="showHint = !showHint">
+      {{tiket.ime}} {{tiket.prezime}}<br>
+      {{tiket.adresa}}<br>
+      kolicina: {{tiket.kolicina}}<br>
+    </div>
+    <button>Obrisi</button> <button>{{tiket.stanje === "ne_isporuceno" ? "isporuceno":"vrati"}}</button>
+      <div ng-show="showHint">
+      {{tiket.napomena}}<br>
+      </div>
+      <hr>
+  </div>
 </div>
