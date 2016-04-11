@@ -9,8 +9,9 @@
 <a href="/#/{{spisakId}}/all/">Sve</a>
 <a href="/#/{{spisakId}}/obrisano/">Obrisano</a>
 <a href="/#/{{spisakId}}/isporuceno/">Isporuceno</a>
-<a href="/#/{{spisakId}}/ne_isporuceno/">Ne Isporuceno</a>
-<div class="notification-item" ng-repeat="tiket in tikets">
+<a href="/#/{{spisakId}}/ne_isporuceno/">Ne Isporuceno</a><br>
+<label>Pretraga: <input ng-model="search"></label>
+<div class="notification-item" ng-repeat="tiket in tikets | filter:search">
   <div>
     <div ng-model="showHint" ng-click="showHint = !showHint">
       {{tiket.ime}} {{tiket.prezime}}<br>
