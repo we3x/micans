@@ -15,9 +15,8 @@ global.micansPaths = {
 gulp.task('webserver',['javascript'], function setupWebServer(){
   gulp.src(micansPaths.app)
       .pipe(webserver({
-        livereload: true,
-        host: '0.0.0.0',
-        port: 9000
+        host: process.env.IP,
+        port: 8081,
       }));
 });
 

@@ -9,4 +9,4 @@ angular.module('micans', [
   .service('micansService', require('./service.js'))
   .controller('micansController', require('./controller.js'))
   .controller('tController', require('./tController.js'))
-  .constant('API_URL', 'http://127.0.0.1:8000/api/v1/');
+  .constant('API_URL', 'https://micans-we3x.c9users.io/api/v1/');
